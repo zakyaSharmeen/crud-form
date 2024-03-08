@@ -1,11 +1,11 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Tasks from "./components/Tasks";
+
+import ToDo from "./components/toDo/ToDo";
 
 function App() {
   return (
     <>
-      <Tasks />
+      <ToDo />
     </>
   );
 }
