@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Form() {
+export default function Form02() {
   const initialFormData = {
     name: "",
     email: "",
@@ -33,7 +33,7 @@ function Form() {
     if (!formData.password.trim()) {
       newErrors.password = "password is required";
     } else if (formData.password.length < 6) {
-      newErrors.password = "password shouold be 6 character";
+      newErrors.password = "password should be 6 characters";
     }
 
     if (Object.keys(newErrors).length === 0) {
@@ -43,13 +43,12 @@ function Form() {
       setFormData(initialFormData);
     } else {
       setErrors(newErrors);
-      setOutputMessage("fix the eerrrors");
+      setOutputMessage(" OOPS fix the errors");
     }
   };
-
   return (
-    <>
-      <h1>FORM VALDATION</h1>
+    <div>
+      <h1>FORM VALIDATION</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="">NAME</label>
@@ -57,53 +56,44 @@ function Form() {
             type="text"
             name="name"
             value={formData.name}
-            placeholder="Enter Your name"
             onChange={handleChange}
           />
           {errors.name && <span className="error">{errors.name}</span>}
         </div>
-
         <div>
-          <label htmlFor="">EMAIL</label>
+          <label htmlFor="">GMAIL</label>
           <input
-            type="text"
+            type="email"
             name="email"
             value={formData.email}
-            placeholder="Enter email"
             onChange={handleChange}
           />
           {errors.email && <span className="error">{errors.email}</span>}
         </div>
-
         <div>
           <label htmlFor="">PASSWORD</label>
           <input
             type="text"
             name="password"
             value={formData.password}
-            placeholder="Enter password"
             onChange={handleChange}
           />
           {errors.password && <span className="error">{errors.password}</span>}
         </div>
-
-        <button type="submit" className="submit">
-          SUBMIT
-        </button>
+        <button type="submit">submit</button>
       </form>
+
       {outputMessage && (
         <div className={submitted ? "success" : "error"}>{outputMessage}</div>
       )}
       {submittedData && (
         <div className="submitted-data">
-          <h1>Submitted Data</h1>
+          <h1>SUbmittedData</h1>
           <p>name: {submittedData.name}</p>
           <p>email: {submittedData.email}</p>
           <p>password: {submittedData.password}</p>
         </div>
       )}
-    </>
+    </div>
   );
 }
-
-export default Form;
